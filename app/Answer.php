@@ -8,7 +8,10 @@ class Answer extends Model
 {
     protected $fillable = ['content', 'author'];
 
-    protected $attributes = [
-        'author' => 'Annoymous',
-    ];
+    public function getAuthorAttribute($value)
+    {
+        if ($value) return $value;
+
+        return 'Annoymous';
+    }
 }
