@@ -23,7 +23,7 @@
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                     <textarea id="question" name="question" class="form-control">{{ old('question') }}</textarea>
-                    <small class="form-text text-muted">Make sure you end you question with a "?"</small>
+                    <small class="form-text text-muted">Make sure you end your question with a "?"</small>
                 </div>
 
                 <button class="btn btn-primary float-right">Ask question</button>
