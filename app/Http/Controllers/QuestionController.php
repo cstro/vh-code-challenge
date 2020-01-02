@@ -63,9 +63,7 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
-        $question->load(['answers' => function ($q) {
-            $q->orderBy('created_at', 'desc');
-          }]);
+        $question->load('answers');
 
         return view('questions.show', ['question' => $question]);
     }
