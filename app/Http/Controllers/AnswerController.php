@@ -17,6 +17,13 @@ class AnswerController extends Controller
      */
     public function store(Question $question, Request $request)
     {
+        $request->validate([
+            'answer' => [
+                'required',
+                'min:5',
+            ]
+        ]);
+
         $question->answers()->create([
             'content' => $request->input('answer'),
             'author' => $request->input('name'),

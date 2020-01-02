@@ -39,7 +39,7 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'question' => [
                 'required',
                 'min:5',
