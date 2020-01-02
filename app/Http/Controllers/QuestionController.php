@@ -25,7 +25,8 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $question = Question::create(['content' => $request->input('question')]);
+        return redirect()->route('questions.show', [$question]);
     }
 
     /**
@@ -36,7 +37,7 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
-        return view('question.show');
+        return view('questions.show', ['question' => $question]);
     }
 
 }
