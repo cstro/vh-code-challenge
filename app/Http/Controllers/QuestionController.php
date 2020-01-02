@@ -24,6 +24,7 @@ class QuestionController extends Controller
 
         $placeholder = Arr::random($placeholderQuestions);
         $questions = Question::orderBy('created_at', 'desc')->get();
+
         return view('questions.index', [
             'questions' => $questions,
             'placeholder' => $placeholder
@@ -62,6 +63,7 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
+        $question->load('answers');
         return view('questions.show', ['question' => $question]);
     }
 

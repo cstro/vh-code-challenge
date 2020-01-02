@@ -15,7 +15,7 @@ class CreateAnswersTable extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('author');
+            $table->string('author')->nullable();
             $table->string('content');
             $table->bigInteger('question_id')->unsigned();
             $table->foreign('question_id')->references('id')->on('questions');
