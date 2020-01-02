@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class QuestionController extends Controller
 {
@@ -14,8 +15,19 @@ class QuestionController extends Controller
      */
     public function index()
     {
+        $placeholderQuestions = [
+            'Where do you get your protein from?',
+            'If an animal is born to be eaten, why does it matter?',
+            'What do Vegans do at Christmas!?',
+            'Can Vegans eat cheese?',
+        ];
+
+        $placeholder = Arr::random($placeholderQuestions);
         $questions = Question::orderBy('created_at', 'desc')->get();
-        return view('questions.index', ['questions' => $questions]);
+        return view('questions.index', [
+            'questions' => $questions,
+            'placeholder' => $placeholder
+        ]);
     }
 
     /**
