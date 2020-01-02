@@ -7,9 +7,15 @@
 
         <h1>{{ $question->content }}</h1>
 
-        <p class="lead">There are currently {{ $question->answers->count() }} Answers</p>
+        <p class="lead">
+            @if ($question->answers->count())
+                {{ $question->answers->count() }} {{ Str::plural('answer', $question->answers->count()) }}
+            @else
+                Sorry, there are no answers yet!
+            @endif
+        </p>
 
-        @foreach ($question->answers as $answer)
+        @forelse ($question->answers as $answer)
             <div class="card my-4">
                 <div class="card-body">
                     <small>{{ $answer->author }}</small>
@@ -17,7 +23,9 @@
                     <small>Posted: {{ $answer->created_at }}</small>
                 </div>
             </div>
-        @endforeach
+        @empty
+            <img src="https://media.giphy.com/media/d2lcHJTG5Tscg/source.gif" />
+        @endforelse
 
         <hr />
 
