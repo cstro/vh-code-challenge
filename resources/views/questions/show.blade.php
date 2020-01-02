@@ -18,11 +18,14 @@
                 </div>
             </div>
         @endforeach
+
+        <hr />
+
     </div>
 
     <div class="row my-4">
         <div class="container">
-            <h3>Can you help answer this question?</h3>
+            <h3>Can you answer this question?</h3>
 
             <form method="POST" action="{{ route('answers.store', [$question]) }}">
                 {{ csrf_field() }}

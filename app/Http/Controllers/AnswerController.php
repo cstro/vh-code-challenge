@@ -17,7 +17,10 @@ class AnswerController extends Controller
      */
     public function store(Question $question, Request $request)
     {
-        $question->answers()->create(['content' => $request->input('answer')]);
+        $question->answers()->create([
+            'content' => $request->input('answer'),
+            'author' => $request->input('name'),
+        ]);
 
         return redirect()->route('questions.show', [$question]);
     }
