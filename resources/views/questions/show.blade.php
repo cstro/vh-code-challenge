@@ -3,9 +3,12 @@
 @section('title', "Question #{$question->id}")
 
 @section('content')
+    <div class="py-4 mb-4 bg-primary text-white">
+        <div class="container">
+            <h1>{{ $question->content }}</h1>
+        </div>
+    </div>
     <div class="container">
-
-        <h1>{{ $question->content }}</h1>
 
         <p class="lead">
             @if ($question->answers->count())
@@ -39,13 +42,14 @@
                 {{ csrf_field() }}
 
                 <div class="form-group">
-                    <label for="question">Your answer</label>
+                    <label for="question">Answer</label>
                     @error('answer')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                     <textarea
                         id="answer"
                         name="answer"
+                        placeholder="Add as much detail as you can!"
                         class="form-control"
                     >{{ old('answer') }}</textarea>
                 </div>
@@ -56,6 +60,7 @@
                         id="name"
                         name="name"
                         class="form-control"
+                        placeholder="Annoymous"
                         value="{{ old('name') }}"
                     />
                 </div>

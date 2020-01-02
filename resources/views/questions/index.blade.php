@@ -39,11 +39,13 @@
     <div class="container">
         <h2 class="mb-4">...Or check out our previously asked questions</h2>
         @foreach ($questions as $question)
-            <a href="{{ route('questions.show', [$question]) }}">
-                <h3>{{ $question->content }}</h3>
-            </a>
+            <div class="d-flex justify-content-between align-items-center py-3 border-bottom">
+                <a href="{{ route('questions.show', [$question]) }}">
+                    <h3>{{ $question->content }}</h3>
+                </a>
 
-            <hr class="my-3"/>
+                <span class="badge badge-dark">{{ $question->answers->count() }} {{ Str::plural('answer', $question->answers->count()) }}</span>
+            </div>
         @endforeach
     </div>
 
