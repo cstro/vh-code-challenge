@@ -26,6 +26,18 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'question' => [
+                'required',
+                'min:5',
+                function ($attribute, $value, $fail) {
+                    if (substr($value, -1) !== '?') {
+                        $fail('The '.$attribute.' must end with a question mark.');
+                    }
+                },
+            ]
+        ]);
+
         $question = Question::create(['content' => $request->input('question')]);
         return redirect()->route('questions.show', [$question]);
     }

@@ -19,7 +19,10 @@
 
                 <div class="form-group">
                     <label for="question">What would you like to know?</label>
-                    <textarea id="question" name="question" class="form-control"></textarea>
+                    @error('question')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    <textarea id="question" name="question" class="form-control">{{ old('question') }}</textarea>
                     <small class="form-text text-muted">Make sure you end you question with a "?"</small>
                 </div>
 
